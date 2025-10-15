@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Compass - Find Your Admission Path with Confidence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #FFB457 0%, #FF6F61 100%);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .hover-lift {
+            transition: transform 0.2s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-4px);
+        }
+        
+        .compass-icon {
+            background: linear-gradient(45deg, #FFB457, #FF6F61);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #FF5A5F 0%, #FF6F61 100%);
+            border-radius: 16px;
+            min-height: 44px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 90, 95, 0.3);
+        }
+        
+        .btn-secondary {
+            border: 2px solid #FF5A5F;
+            border-radius: 16px;
+            min-height: 44px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: #FF5A5F;
+            color: white;
+        }
+        
+        .input-field {
+            border-radius: 12px;
+            min-height: 44px;
+            border: 2px solid #e5e7eb;
+            transition: all 0.2s ease;
+        }
+        
+        .input-field:focus {
+            border-color: #0B1B3B;
+            box-shadow: 0 0 0 3px rgba(11, 27, 59, 0.1);
+            outline: none;
+        }
+        
+        .success-green { color: #2ECC71; }
+        .warning-amber { color: #FFB020; }
+        .trust-navy { color: #0B1B3B; }
+        .coral-primary { color: #FF5A5F; }
+    </style>
+</head>
+<body class="bg-gray-50" style="font-size: 16px; line-height: 1.6;">
+    <!-- Header -->
+    <header class="gradient-bg shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                        <svg class="w-6 h-6 text-orange-500" fill="currentColor" viewBox="0 0 24 24" aria-label="Admission Compass logo">
+                            <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z"/>
+                        </svg>
+                    </div>
+                    <span class="text-white font-bold text-xl">Admission Compass</span>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8" role="navigation" aria-label="Main navigation">
+                    <a href="#features" class="text-white hover:text-orange-100 transition-colors">Features</a>
+                    <a href="#pricing" class="text-white hover:text-orange-100 transition-colors">Pricing</a>
+                    <a href="#about" class="text-white hover:text-orange-100 transition-colors">About</a>
+                    <a href="#contact" class="text-white hover:text-orange-100 transition-colors">Contact</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <button onclick="showLogin()" class="text-white hover:text-orange-100 transition-colors min-h-[44px] px-4" aria-label="Login to your account">Login</button>
+                    <button onclick="showSignup()" class="bg-white text-orange-500 px-6 py-2 rounded-full font-semibold hover:bg-orange-50 transition-colors min-h-[44px]" aria-label="Create new account">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-white fade-in">
+                    <h1 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                        Find Your Admission Path with <span class="text-yellow-200">Confidence</span>
+                    </h1>
+                    <p class="text-xl mb-8 text-orange-100 leading-relaxed">
+                        Get predictive admission chances, discover alternative school suggestions, and download comprehensive reports to guide your university journey.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="showPredictionFlow()" class="btn-primary bg-white text-orange-500 px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-orange-50 transition-colors shadow-lg" aria-label="Check your admission chances">
+                            Check Your Chances
+                        </button>
+                        <button class="btn-secondary border-2 border-white text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-white hover:text-orange-500 transition-colors" aria-label="Try free features">
+                            Practice 10 Free Questions
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <div class="glass-card rounded-3xl p-8 shadow-2xl">
+                        <div class="space-y-6">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-xl font-semibold text-gray-800">Admission Likelihood</h3>
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">78%</span>
+                            </div>
+                            
+                            <div class="bg-gray-100 rounded-full h-3" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" aria-label="Admission likelihood 78 percent">
+                                <div class="bg-gradient-to-r from-orange-400 to-pink-400 h-3 rounded-full" style="width: 78%"></div>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-blue-50 p-4 rounded-xl">
+                                    <p class="text-sm text-gray-600">Cutoff Match</p>
+                                    <p class="font-semibold text-blue-600">On Track</p>
+                                </div>
+                                <div class="bg-purple-50 p-4 rounded-xl">
+                                    <p class="text-sm text-gray-600">Alternatives</p>
+                                    <p class="font-semibold text-purple-600">5 Found</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <p class="text-sm text-gray-600 mb-2">Top Alternatives</p>
+                                <div class="space-y-1">
+                                    <p class="text-sm font-medium">• University of Lagos (UNILAG)</p>
+                                    <p class="text-sm font-medium">• University of Nigeria (UNN)</p>
+                                    <p class="text-sm font-medium">• University of Ibadan (UI)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Everything You Need to Succeed</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Comprehensive tools and insights to navigate your university admission journey with confidence.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="glass-card rounded-2xl p-8 shadow-lg hover-lift fade-in">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-pink-400 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24" aria-label="Admission prediction icon">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Admission Prediction</h3>
+                    <p class="text-gray-600">Get accurate likelihood scores based on your UTME results, O'level grades, and historical admission data.</p>
+                </div>
+                
+                <div class="glass-card rounded-2xl p-8 shadow-lg hover-lift fade-in">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-400 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24" aria-label="Recommendations icon">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Top 5 Recommendations</h3>
+                    <p class="text-gray-600">Discover the best alternative universities that match your profile and academic goals.</p>
+                </div>
+                
+                <div class="glass-card rounded-2xl p-8 shadow-lg hover-lift fade-in">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-teal-400 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24" aria-label="Download report icon">
+                            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Downloadable Report</h3>
+                    <p class="text-gray-600">Get comprehensive PDF reports with detailed analysis, trends, and actionable next steps.</p>
+                </div>
+                
+                <div class="glass-card rounded-2xl p-8 shadow-lg hover-lift fade-in">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-400 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24" aria-label="UTME practice icon">
+                            <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">UTME Practice</h3>
+                    <p class="text-gray-600">Access 10 free practice questions per subject to sharpen your skills and boost your confidence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">How It Works</h2>
+                <p class="text-xl text-gray-600">Simple steps to unlock your admission insights</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-gradient-to-br from-orange-400 to-pink-400 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-white">1</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Enter Your Scores</h3>
+                    <p class="text-gray-600">Input your UTME score, O'level results, and desired course information.</p>
+                </div>
+                
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-white">2</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">See Preview</h3>
+                    <p class="text-gray-600">Get an instant preview of your admission likelihood and basic recommendations.</p>
+                </div>
+                
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-400 to-teal-400 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-white">3</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Unlock Full Report</h3>
+                    <p class="text-gray-600">Use tokens to access detailed analysis, trends, and comprehensive recommendations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Strip -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="fade-in">
+                    <div class="text-4xl font-bold text-orange-500 mb-2">50,000+</div>
+                    <p class="text-gray-600">Students Helped</p>
+                </div>
+                <div class="fade-in">
+                    <div class="text-4xl font-bold text-pink-500 mb-2">200+</div>
+                    <p class="text-gray-600">Universities Covered</p>
+                </div>
+                <div class="fade-in">
+                    <div class="text-4xl font-bold text-purple-500 mb-2">95%</div>
+                    <p class="text-gray-600">Accuracy Rate</p>
+                </div>
+            </div>
+            
+            <div class="mt-16 glass-card rounded-2xl p-8 shadow-lg fade-in">
+                <div class="text-center">
+                    <div class="flex justify-center mb-4" aria-label="5 star rating">
+                        <div class="flex space-x-1">
+                            <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 24 24" aria-label="Star">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 24 24" aria-label="Star">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 24 24" aria-label="Star">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 24 24" aria-label="Star">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 24 24" aria-label="Star">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <blockquote class="text-xl text-gray-700 mb-4">
+                        "Admission Compass helped me discover universities I never considered. I got into my dream school thanks to their accurate predictions!"
+                    </blockquote>
+                    <p class="text-gray-600">- Sarah A., University of Lagos Student</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Simple, Transparent Pricing</h2>
+                <p class="text-xl text-gray-600">Start free, upgrade when you need more insights</p>
+                
+                <!-- Student/Parent Toggle -->
+                <div class="mt-8 inline-flex bg-white rounded-2xl p-2 shadow-lg">
+                    <button id="studentToggle" onclick="togglePricing('student')" class="px-6 py-3 rounded-xl font-semibold transition-all duration-200 bg-gradient-to-r from-orange-400 to-pink-400 text-white" aria-label="View pricing for students">
+                        For Students
+                    </button>
+                    <button id="parentToggle" onclick="togglePricing('parent')" class="px-6 py-3 rounded-xl font-semibold transition-all duration-200 text-gray-600 hover:text-gray-900" aria-label="View pricing for parents">
+                        For Parents
+                    </button>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Free Plan -->
+                <div class="glass-card rounded-3xl p-8 shadow-lg fade-in">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-teal-400 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24" aria-label="Free plan icon">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Free Preview</h3>
+                        <div class="text-5xl font-bold text-gray-900 mb-2">₦0</div>
+                        <p class="text-gray-600 mb-8" id="freePlanSubtext">Perfect to get started</p>
+                        
+                        <ul class="space-y-4 mb-8 text-left">
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-label="Included feature">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                <span>Preview admission likelihood percentage</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-label="Included feature">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                <span>1 free alternative school suggestion</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-label="Included feature">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                <span>10 free UTME practice questions per subject</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-label="Included feature">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                <span>Basic cutoff information</span>
+                            </li>
+                        </ul>
+                        
+                        <button class="w-full bg-gray-200 text-gray-800 py-4 rounded-2xl font-semibold text-lg hover:bg-gray-300 transition-colors focus:ring-4 focus:ring-gray-100 focus:outline-none min-h-[44px]" aria-label="Start with free plan">
+                            Get Started Free
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Token Plan -->
+                <div class="glass-card rounded-3xl p-8 shadow-lg border-2 border-orange-300 relative fade-in">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-gradient-to-r from-orange-400 to-pink-400 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg">
+                            Most Popular
+                        </span>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-pink-400 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24" aria-label="Token plan icon">
+                                <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Token Bundle</h3>
+                        <div class="text-5xl font-bold text-gray-900 mb-2">₦1,000</div>
+                        <p class="text-gray-600 mb-2">3 Tokens</p>
+                        <p class="text-sm text-orange-600 font-medium mb-8" id="tokenPlanSubtext">Unlock detailed insights</p>
+                        
+                        <!-- Token Usage Examples -->
+                        <div class="bg-orange-50 rounded-2xl p-6 mb-8">
+                            <h4 class="font-semibold text-gray-900 mb-4">1 Token Gets You:</h4>
+                            <div class="space-y-3 text-sm">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700">Full prediction report</span>
+                                    <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded-lg font-medium">1 Token</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700">Downloadable PDF report</span>
+                                    <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded-lg font-medium">1 Token</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700">Full UTME subject bank</span>
+                                    <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded-lg font-medium">1 Token</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <ul class="space-y-4 mb-8 text-left">
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-label="Included feature">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                <span>Detailed admission analysis & trends</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-label="Included feature">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                <span>Top 5 personalized school recommendations</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-label="Included feature">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                <span>Professional PDF reports for applications</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-label="Included feature">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                <span>Complete UTME practice question banks</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-label="Included feature">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                <span>Historical admission trends & insights</span>
+                            </li>
+                        </ul>
+                        
+                        <button class="w-full bg-gradient-to-r from-orange-400 to-pink-400 text-white py-4 rounded-2xl font-semibold text-lg hover:from-orange-500 hover:to-pink-500 transition-colors shadow-lg focus:ring-4 focus:ring-orange-100 focus:outline-none min-h-[44px]" aria-label="Buy token bundle">
+                            Buy Tokens Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Launch Promos -->
+            <div class="mt-16 text-center fade-in">
+                <div class="inline-flex flex-col sm:flex-row items-center gap-4 bg-white rounded-3xl p-6 shadow-lg">
+                    <div class="flex items-center space-x-3">
+                        <span class="bg-red-500 text-white px-4 py-2 rounded-full text-sm font-bold animate-pulse">50% OFF</span>
+                        <span class="text-gray-800 font-medium">First 500 users get 50% off! Only <span class="font-bold text-red-600">247</span> spots left.</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span class="bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-bold">EXTRA 20% OFF</span>
+                        <span class="text-gray-800 font-medium">First 200 users get additional 20% off!</span>
+                    </div>
+                </div>
+                
+                <!-- Referral Note -->
+                <div class="mt-6 bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6 max-w-2xl mx-auto">
+                    <div class="flex items-center justify-center space-x-3 mb-2">
+                        <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 24 24" aria-label="Referral reward icon">
+                            <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 7H16c-.8 0-1.54.37-2 1l-3 4v2h2l2.54-3.4L16.5 16H18v6h2z"/>
+                        </svg>
+                        <h4 class="text-lg font-semibold text-purple-900">Earn 10% Discount</h4>
+                    </div>
+                    <p class="text-purple-800">When your referral buys tokens, you earn 10% discount on your next purchase—tracked by your unique username.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Referral Section -->
+    <section class="py-20 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-4xl font-bold text-white mb-4">Invite a Friend & Earn Rewards</h2>
+                <p class="text-xl text-orange-100">Share your username and get rewards when your friends sign up</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Referral Widget -->
+                <div class="glass-card rounded-3xl p-8 shadow-2xl fade-in">
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        <!-- Left Side - Referral Info -->
+                        <div>
+                            <div class="flex items-center space-x-3 mb-6">
+                                <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-400 rounded-2xl flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24" aria-label="Referral icon">
+                                        <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 7H16c-.8 0-1.54.37-2 1l-3 4v2h2l2.54-3.4L16.5 16H18v6h2zM12.5 11.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5S11 9.17 11 10s.67 1.5 1.5 1.5zM5.5 6c1.11 0 2-.89 2-2s-.89-2-2-2-2 .89-2 2 .89 2 2 2zm2 16v-7H9V9c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v6h1.5v7h4z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-900">Your Referral Code</h3>
+                                    <p class="text-gray-600">Share this with friends to earn rewards</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Username Display -->
+                            <div class="bg-gray-50 rounded-2xl p-6 mb-6">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-sm text-gray-600 mb-1">Your unique username</p>
+                                        <p class="text-2xl font-bold text-gray-900" id="userReferralCode">student_sarah2024</p>
+                                    </div>
+                                    <button onclick="copyReferralLink()" class="bg-gradient-to-r from-orange-400 to-pink-400 text-white px-6 py-3 rounded-xl font-semibold hover:from-orange-500 hover:to-pink-500 transition-colors focus:ring-4 focus:ring-orange-100 focus:outline-none min-h-[44px]" aria-label="Copy referral link">
+                                        <svg class="w-5 h-5 inline mr-2" fill="currentColor" viewBox="0 0 24 24" aria-label="Copy icon">
+                                            <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                                        </svg>
+                                        Copy Link
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Progress Bar -->
+                            <div class="mb-6">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm font-medium text-gray-700">Progress to Free Token</span>
+                                    <span class="text-sm text-gray-600">3/3 referrals</span>
+                                </div>
+                                <div class="bg-gray-200 rounded-full h-3" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Referral progress 100 percent complete">
+                                    <div class="bg-gradient-to-r from-green-400 to-teal-400 h-3 rounded-full transition-all duration-500" style="width: 100%"></div>
+                                </div>
+                                <p class="text-sm text-green-600 font-medium mt-2">🎉 Congratulations! You've earned 1 free token!</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Right Side - Referral History -->
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-6">Referral History</h4>
+                            <div class="space-y-4 max-h-80 overflow-y-auto">
+                                <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                                <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 24 24" aria-label="Success icon">
+                                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-gray-900">Michael O.</p>
+                                                <p class="text-sm text-gray-600">Joined & purchased tokens</p>
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-sm font-semibold text-green-600">+₦100 discount</p>
+                                            <p class="text-xs text-gray-500">2 days ago</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                                <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 24 24" aria-label="Success icon">
+                                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-gray-900">Fatima A.</p>
+                                                <p class="text-sm text-gray-600">Joined & purchased tokens</p>
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-sm font-semibold text-green-600">+₦100 discount</p>
+                                            <p class="text-xs text-gray-500">1 week ago</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                                <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24" aria-label="Pending icon">
+                                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-gray-900">David K.</p>
+                                                <p class="text-sm text-gray-600">Signed up (pending purchase)</p>
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-sm font-medium text-blue-600">Pending</p>
+                                            <p class="text-xs text-gray-500">3 days ago</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Total Earnings -->
+                            <div class="mt-6 bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6">
+                                <div class="text-center">
+                                    <p class="text-sm text-purple-600 font-medium mb-1">Total Earnings</p>
+                                    <p class="text-3xl font-bold text-purple-900">₦200</p>
+                                    <p class="text-sm text-purple-700">+ 1 Free Token</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- How Referrals Work -->
+                <div class="mt-12 grid md:grid-cols-3 gap-8 fade-in">
+                    <div class="text-center text-white">
+                        <div class="w-16 h-16 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl font-bold">1</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Share Your Username</h3>
+                        <p class="text-orange-100">Send your unique username to friends who need admission guidance</p>
+                    </div>
+                    
+                    <div class="text-center text-white">
+                        <div class="w-16 h-16 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl font-bold">2</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">They Sign Up & Buy</h3>
+                        <p class="text-orange-100">When they purchase tokens using your referral, you both benefit</p>
+                    </div>
+                    
+                    <div class="text-center text-white">
+                        <div class="w-16 h-16 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl font-bold">3</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Earn Rewards</h3>
+                        <p class="text-orange-100">Get 10% discount on next purchase + free tokens every 3 referrals</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-orange-400 to-pink-400 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24" aria-label="Admission Compass logo">
+                                <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z"/>
+                            </svg>
+                        </div>
+                        <span class="font-bold text-xl">Admission Compass</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Guiding students to their perfect university match with data-driven insights.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors" aria-label="Follow us on Twitter">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors" aria-label="Follow us on Instagram">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors" aria-label="Follow us on Facebook">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-lg mb-6">Company</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">How It Works</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-lg mb-6">Support</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Student Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-lg mb-6">Legal</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Cookie Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Data Protection</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 Admission Compass. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Sign Up Modal -->
+    <div id="signupModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50" role="dialog" aria-labelledby="signupTitle" aria-modal="true">
+        <div class="glass-card rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl">
+            <div class="text-center mb-8">
+                <h2 id="signupTitle" class="text-3xl font-bold text-gray-900 mb-2">Create your account</h2>
+                <p class="text-gray-600">Join thousands of students finding their path</p>
+            </div>
+            
+            <form class="space-y-6">
+                <div>
+                    <label for="signupName" class="sr-only">Full Name</label>
+                    <input type="text" id="signupName" placeholder="Full Name" class="input-field w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-orange-400 focus:ring-2 focus:ring-orange-100 outline-none transition-colors" required>
+                </div>
+                <div>
+                    <label for="signupEmail" class="sr-only">Email Address</label>
+                    <input type="email" id="signupEmail" placeholder="Email Address" class="input-field w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-orange-400 focus:ring-2 focus:ring-orange-100 outline-none transition-colors" required>
+                </div>
+                <div>
+                    <label for="signupPassword" class="sr-only">Password</label>
+                    <input type="password" id="signupPassword" placeholder="Password" class="input-field w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-orange-400 focus:ring-2 focus:ring-orange-100 outline-none transition-colors" required>
+                </div>
+                <div>
+                    <label for="signupConfirmPassword" class="sr-only">Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" class="input-field w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-orange-400 focus:ring-2 focus:ring-orange-100 outline-none transition-colors" required>
+                </div>
+                <div>
+                    <label for="signupUTME" class="sr-only">UTME Registration Number (Optional)</label>
+                    <input type="text" id="signupUTME" placeholder="UTME Registration Number (Optional)" class="input-field w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-orange-400 focus:ring-2 focus:ring-orange-100 outline-none transition-colors">
+                </div>
+                
+                <button type="submit" class="w-full bg-gradient-to-r from-orange-400 to-pink-400 text-white py-3 rounded-xl font-semibold hover:from-orange-500 hover:to-pink-500 transition-colors min-h-[44px]" aria-label="Create account">
+                    Create Account
+                </button>
+                
+                <div class="text-center">
+                    <div class="relative">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-gray-300"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-2 bg-white text-gray-500">Or continue with</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-3 gap-3">
+                    <button type="button" class="flex justify-center items-center py-3 px-4 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors min-h-[44px]" aria-label="Sign up with Google">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" aria-label="Google logo">
+                            <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                            <path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                            <path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                            <path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                        </svg>
+                    </button>
+                    <button type="button" class="flex justify-center items-center py-3 px-4 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors min-h-[44px]" aria-label="Sign up with Apple">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-label="Apple logo">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                        </svg>
+                    </button>
+                    <button type="button" class="flex justify-center items-center py-3 px-4 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors min-h-[44px]" aria-label="Sign up with Facebook">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-label="Facebook logo">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <p class="text-sm text-gray-600 text-center">
+                    By signing up you agree to our <a href="#" class="text-orange-500 hover:underline">Terms</a> & <a href="#" class="text-orange-500 hover:underline">Privacy Policy</a>
+                </p>
+                
+                <p class="text-center text-gray-600">
+                    Already have an account? <button type="button" onclick="showLogin()" class="text-orange-500 hover:underline font-semibold">Login</button>
+                </p>
+            </form>
+            
+            <button onclick="closeModal('signupModal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="Close signup modal">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50" role="dialog" aria-labelledby="loginTitle" aria-modal="true">
+        <div class="glass-card rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl">
+            <div class="text-center mb-8">
+                <h2 id="loginTitle" class="text-3xl font-bold text-gray-900 mb-2">Welcome back</h2>
+                <p class="text-gray-600">Sign in to continue your journey</p>
+            </div>
+            
+            <form class="space-y-6">
+                <div>
+                    <label for="loginEmail" class="sr-only">Email Address</label>
+                    <input type="email" id="loginEmail" placeholder="Email Address" class="input-field w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-orange-400 focus:ring-2 focus:ring-orange-100 outline-none transition-colors" required>
+                </div>
+                <div>
+                    <label for="loginPassword" class="sr-only">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Password" class="input-field w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-orange-400 focus:ring-2 focus:ring-orange-100 outline-none transition-colors" required>
+                </div>
+                
+                <div class="flex items-center justify-between">
+                    <label class="flex items-center">
+                        <input type="checkbox" class="rounded border-gray-300 text-orange-500 focus:ring-orange-200">
+                        <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                    </label>
+                    <a href="#" class="text-sm text-orange-500 hover:underline">Forgot password?</a>
+                </div>
+                
+                <button type="submit" class="w-full bg-gradient-to-r from-orange-400 to-pink-400 text-white py-3 rounded-xl font-semibold hover:from-orange-500 hover:to-pink-500 transition-colors min-h-[44px]" aria-label="Login to account">
+                    Login
+                </button>
+                
+                <div class="text-center">
+                    <div class="relative">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-gray-300"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-2 bg-white text-gray-500">Or continue with</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-3 gap-3">
+                    <button type="button" class="flex justify-center items-center py-3 px-4 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors min-h-[44px]" aria-label="Login with Google">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" aria-label="Google logo">
+                            <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                            <path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                            <path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                            <path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                        </svg>
+                    </button>
+                    <button type="button" class="flex justify-center items-center py-3 px-4 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors min-h-[44px]" aria-label="Login with Apple">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-label="Apple logo">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                        </svg>
+                    </button>
+                    <button type="button" class="flex justify-center items-center py-3 px-4 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors min-h-[44px]" aria-label="Login with Facebook">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-label="Facebook logo">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <p class="text-center text-gray-600">
+                    New here? <button type="button" onclick="showSignup()" class="text-orange-500 hover:underline font-semibold">Create an account</button>
+                </p>
+            </form>
+            
+            <button onclick="closeModal('loginModal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="Close login modal">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Prediction Flow Modal -->
+    <div id="predictionModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50" role="dialog" aria-labelledby="predictionTitle" aria-modal="true">
+        <div class="glass-card rounded-3xl p-8 max-w-2xl w-full mx-4 shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div class="text-center mb-8">
+                <h2 id="predictionTitle" class="text-3xl font-bold text-gray-900 mb-2">Check Your Admission Chances</h2>
+                <p class="text-gray-600">Enter your details to get personalized predictions</p>
+            </div>
+            
+            <form class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="utmeScore" class="block text-sm font-medium text-gray-700 mb-2">UTME Score</label>
+                        <input type="number" id="utmeScore" placeholder="e.g. 280" min="0" max="400" class="input-field w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-orange-400 focus:ring-2 focus:ring-orange-100 outline-none transition-colors" required>
+                        <p class="text-xs text-gray-500 mt-1">Enter your UTME score (0-400)</p>
+                    </div>
+                    <div>
+                        <label for="desiredCourse" class="block text-sm font-medium text-gray-700 mb-2">Desired Course</label>
+                        <select id="desiredCourse" class="input-field w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-orange-400 focus:ring-2 focus:ring-orange-100 outline-none transition-colors" required>
+                            <option value="">Select Course</option>
+                            <option>Medicine and Surgery</option>
+                            <option>Law</option>
+                            <option>Engineering</option>
+                            <option>Computer Science</option>
+                            <option>Accounting</option>
+                            <option>Economics</option>
+                            <option>Psychology</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">O'Level Subjects & Grades</label>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex space-x-2">
+                            <label for="subject1" class="sr-only">First subject</label>
+                            <select id="subject1" class="flex-1 px-3 py-2 rounded-lg border border-gray-300 focus:border-orange-400 outline-none input-field">
+                                <option>Mathematics</option>
+                                <option>English Language</option>
+                                <option>Physics</option>
+                                <option>Chemistry</option>
+                                <option>Biology</option>
+                            </select>
+                            <label for="grade1" class="sr-only">First grade</label>
+                            <select id="grade1" class="w-20 px-3 py-2 rounded-lg border border-gray-300 focus:border-orange-400 outline-none input-field">
+                                <option>A1</option>
+                                <option>B2</option>
+                                <option>B3</option>
+                                <option>C4</option>
+                                <option>C5</option>
+                                <option>C6</option>
+                            </select>
+                        </div>
+                        <div class="flex space-x-2">
+                            <label for="subject2" class="sr-only">Second subject</label>
+                            <select id="subject2" class="flex-1 px-3 py-2 rounded-lg border border-gray-300 focus:border-orange-400 outline-none input-field">
+                                <option>English Language</option>
+                                <option>Mathematics</option>
+                                <option>Physics</option>
+                                <option>Chemistry</option>
+                                <option>Biology</option>
+                            </select>
+                            <label for="grade2" class="sr-only">Second grade</label>
+                            <select id="grade2" class="w-20 px-3 py-2 rounded-lg border border-gray-300 focus:border-orange-400 outline-none input-field">
+                                <option>A1</option>
+                                <option>B2</option>
+                                <option>B3</option>
+                                <option>C4</option>
+                                <option>C5</option>
+                                <option>C6</option>
+                            </select>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1">Add your most relevant O'Level subjects and grades</p>
+                </div>
+                
+                <div>
+                    <label for="preferredUniversity" class="block text-sm font-medium text-gray-700 mb-2">Preferred University</label>
+                    <select id="preferredUniversity" class="input-field w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-orange-400 focus:ring-2 focus:ring-orange-100 outline-none transition-colors" required>
+                        <option value="">Select University</option>
+                        <option>University of Lagos (UNILAG)</option>
+                        <option>University of Ibadan (UI)</option>
+                        <option>Obafemi Awolowo University (OAU)</option>
+                        <option>University of Nigeria (UNN)</option>
+                        <option>Ahmadu Bello University (ABU)</option>
+                    </select>
+                </div>
+                
+                <button type="button" onclick="showPreviewResult()" class="w-full bg-gradient-to-r from-orange-400 to-pink-400 text-white py-4 rounded-xl font-semibold text-lg hover:from-orange-500 hover:to-pink-500 transition-colors min-h-[44px]" aria-label="Get prediction preview">
+                    Get Prediction Preview
+                </button>
+            </form>
+            
+            <button onclick="closeModal('predictionModal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="Close prediction modal">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Preview Result Modal -->
+    <div id="previewModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50" role="dialog" aria-labelledby="previewTitle" aria-modal="true">
+        <div class="glass-card rounded-3xl p-8 max-w-lg w-full mx-4 shadow-2xl">
+            <div class="text-center mb-8">
+                <div class="w-20 h-20 bg-gradient-to-br from-green-400 to-teal-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24" aria-label="Success icon">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </div>
+                <h2 id="previewTitle" class="text-3xl font-bold text-gray-900 mb-2">Admission Likelihood</h2>
+                <div class="inline-flex items-center bg-green-100 text-green-800 px-4 py-2 rounded-full font-semibold text-lg">
+                    Likely - 78%
+                </div>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="bg-gray-50 p-6 rounded-2xl">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-gray-600">Admission Chance</span>
+                        <span class="font-semibold text-gray-900">78%</span>
+                    </div>
+                    <div class="bg-gray-200 rounded-full h-3" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" aria-label="Admission chance 78 percent">
+                        <div class="bg-gradient-to-r from-green-400 to-teal-400 h-3 rounded-full" style="width: 78%"></div>
+                    </div>
+                </div>
+                
+                <div class="bg-yellow-50 border border-yellow-200 rounded-2xl p-6">
+                    <div class="flex items-start space-x-3">
+                        <svg class="w-6 h-6 text-yellow-600 mt-1" fill="currentColor" viewBox="0 0 24 24" aria-label="Information icon">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                        </svg>
+                        <div>
+                            <h3 class="font-semibold text-yellow-800 mb-2">This is a preview</h3>
+                            <p class="text-yellow-700 text-sm">Unlock the full report with detailed analysis, alternative schools, and actionable insights for just 1 token.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex space-x-4">
+                    <button class="flex-1 bg-gradient-to-r from-orange-400 to-pink-400 text-white py-3 rounded-xl font-semibold hover:from-orange-500 hover:to-pink-500 transition-colors min-h-[44px]" aria-label="Unlock full report for 1 token">
+                        Unlock Full Report (1 Token)
+                    </button>
+                    <button class="flex-1 border-2 border-gray-300 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-colors min-h-[44px]" aria-label="See 1 alternative school for free">
+                        See 1 Alternative Free
+                    </button>
+                </div>
+            </div>
+            
+            <button onclick="closeModal('previewModal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="Close preview modal">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Modal functions
+        function showSignup() {
+            closeAllModals();
+            document.getElementById('signupModal').classList.remove('hidden');
+            document.getElementById('signupModal').classList.add('flex');
+            document.getElementById('signupName').focus();
+        }
+
+        function showLogin() {
+            closeAllModals();
+            document.getElementById('loginModal').classList.remove('hidden');
+            document.getElementById('loginModal').classList.add('flex');
+            document.getElementById('loginEmail').focus();
+        }
+
+        function showPredictionFlow() {
+            closeAllModals();
+            document.getElementById('predictionModal').classList.remove('hidden');
+            document.getElementById('predictionModal').classList.add('flex');
+            document.getElementById('utmeScore').focus();
+        }
+
+        function showPreviewResult() {
+            closeModal('predictionModal');
+            document.getElementById('previewModal').classList.remove('hidden');
+            document.getElementById('previewModal').classList.add('flex');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+            document.getElementById(modalId).classList.remove('flex');
+        }
+
+        function closeAllModals() {
+            const modals = ['signupModal', 'loginModal', 'predictionModal', 'previewModal'];
+            modals.forEach(modalId => {
+                document.getElementById(modalId).classList.add('hidden');
+                document.getElementById(modalId).classList.remove('flex');
+            });
+        }
+
+        // Close modals when clicking outside
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('fixed') && e.target.classList.contains('inset-0')) {
+                closeAllModals();
+            }
+        });
+
+        // Close modals with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeAllModals();
+            }
+        });
+
+        // Pricing toggle functionality
+        function togglePricing(type) {
+            const studentToggle = document.getElementById('studentToggle');
+            const parentToggle = document.getElementById('parentToggle');
+            const freePlanSubtext = document.getElementById('freePlanSubtext');
+            const tokenPlanSubtext = document.getElementById('tokenPlanSubtext');
+            
+            if (type === 'student') {
+                studentToggle.className = 'px-6 py-3 rounded-xl font-semibold transition-all duration-200 bg-gradient-to-r from-orange-400 to-pink-400 text-white';
+                parentToggle.className = 'px-6 py-3 rounded-xl font-semibold transition-all duration-200 text-gray-600 hover:text-gray-900';
+                freePlanSubtext.textContent = 'Perfect to get started';
+                tokenPlanSubtext.textContent = 'Unlock detailed insights';
+            } else {
+                parentToggle.className = 'px-6 py-3 rounded-xl font-semibold transition-all duration-200 bg-gradient-to-r from-orange-400 to-pink-400 text-white';
+                studentToggle.className = 'px-6 py-3 rounded-xl font-semibold transition-all duration-200 text-gray-600 hover:text-gray-900';
+                freePlanSubtext.textContent = 'Help your child explore options';
+                tokenPlanSubtext.textContent = 'Support their success journey';
+            }
+        }
+
+        // Referral functionality
+        function copyReferralLink() {
+            const referralCode = document.getElementById('userReferralCode').textContent;
+            const referralLink = `https://admissioncompass.com/signup?ref=${referralCode}`;
+            
+            navigator.clipboard.writeText(referralLink).then(() => {
+                // Show success feedback
+                const button = event.target.closest('button');
+                const originalText = button.innerHTML;
+                button.innerHTML = '<svg class="w-5 h-5 inline mr-2" fill="currentColor" viewBox="0 0 24 24" aria-label="Success icon"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Copied!';
+                
+                // Add confetti effect
+                createConfetti();
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                }, 2000);
+            }).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = referralLink;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                const button = event.target.closest('button');
+                const originalText = button.innerHTML;
+                button.innerHTML = '<svg class="w-5 h-5 inline mr-2" fill="currentColor" viewBox="0 0 24 24" aria-label="Success icon"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Copied!';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                }, 2000);
+            });
+        }
+
+        // Confetti effect for successful referral actions
+        function createConfetti() {
+            const colors = ['#FFB457', '#FF6F61', '#2ECC71', '#FFB020', '#4ecdc4'];
+            const confettiCount = 50;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-10px';
+                confetti.style.zIndex = '9999';
+                confetti.style.borderRadius = '50%';
+                confetti.style.pointerEvents = 'none';
+                
+                document.body.appendChild(confetti);
+                
+                const animation = confetti.animate([
+                    { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                    { transform: `translateY(100vh) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                ], {
+                    duration: Math.random() * 2000 + 1000,
+                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                });
+                
+                animation.onfinish = () => {
+                    confetti.remove();
+                };
+            }
+        }
+
+        // Form validation and submission
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Add form submission logic here
+                console.log('Form submitted');
+            });
+        });
+
+        // Add loading states to buttons
+        document.querySelectorAll('button[type="submit"]').forEach(button => {
+            button.addEventListener('click', function() {
+                const originalText = this.textContent;
+                this.textContent = 'Loading...';
+                this.disabled = true;
+                
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.disabled = false;
+                }, 2000);
+            });
+        });
+
+        // Keyboard navigation for modals
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                const activeModal = document.querySelector('.fixed.flex');
+                if (activeModal) {
+                    const focusableElements = activeModal.querySelectorAll('button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                    const firstElement = focusableElements[0];
+                    const lastElement = focusableElements[focusableElements.length - 1];
+                    
+                    if (e.shiftKey && document.activeElement === firstElement) {
+                        e.preventDefault();
+                        lastElement.focus();
+                    } else if (!e.shiftKey && document.activeElement === lastElement) {
+                        e.preventDefault();
+                        firstElement.focus();
+                    }
+                }
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'979e83ccf0bd97ab',t:'MTc1Njk5OTY4Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
